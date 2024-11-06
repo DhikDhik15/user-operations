@@ -1,0 +1,158 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dokumentasi API",
+        "description": "Lorem Ipsum",
+        "contact": {
+            "email": "hi.wasissubekti02@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "register",
+                "summary": "Register User",
+                "description": "Register User",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "name": "John Doe",
+                                    "email": "VxqFP@example.com",
+                                    "password": "password",
+                                    "age": 20,
+                                    "status": "active"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "success"
+                    },
+                    "500": {
+                        "description": "Failed !!"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "login",
+                "summary": "Login User",
+                "description": "Login User",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "email": "VxqFP@example.com",
+                                    "password": "password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "500": {
+                        "description": "Failed !!"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "logout",
+                "summary": "Logout User",
+                "description": "Logout User",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "token": "token"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logout successful"
+                    },
+                    "401": {
+                        "description": "Unauthorized - Token missing or invalid"
+                    },
+                    "500": {
+                        "description": "Failed !!"
+                    }
+                }
+            }
+        },
+        "components": {
+            "securitySchemes": {
+                "bearerAuth": {
+                    "type": "http",
+                    "scheme": "bearer",
+                    "bearerFormat": "JWT"
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "users",
+                "summary": "Get All Users",
+                "description": "Get All Users",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "500": {
+                        "description": "Failed !!"
+                    }
+                }
+            }
+        }
+    }
+}
