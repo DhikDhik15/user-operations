@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "3b5f97b0-8d54-4fa6-922b-521307f218b7",
+		"name": "Result Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13398046"
+	},
+	"item": [
+		{
+			"name": "test-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "a@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8002/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "### Login API\n\nThis API endpoint is used to authenticate and login a user.\n\n#### Request Body\n\n- **email** (text, required): The email address of the user.\n    \n- **password** (text, required): The password of the user.\n    \n\n#### Response\n\nThe response of this request is represented as a JSON schema."
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "dhika",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "31",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "dika@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin1234",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "This endpoint is used to register a user via an HTTP POST request. The request should be sent to [http://localhost:8000/api/register](http://localhost:8002/api/register) with a form-data request body containing the user's name, age, email, password, and status.\n\n### Request Body\n\n- name (text): The name of the user.\n    \n- age (text): The age of the user.\n    \n- email (text): The email address of the user.\n    \n- password (text): The password for the user's account.\n    \n- status (text): The status of the user.\n    \n\n### Response\n\nThe response of this request is a JSON schema."
+			},
+			"response": []
+		},
+		{
+			"name": "get-users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDIvYXBpL2xvZ2luIiwiaWF0IjoxNzMwOTA0Mzc3LCJleHAiOjE3MzA5MDc5NzcsIm5iZiI6MTczMDkwNDM3NywianRpIjoiSk9KT1FDN09oeFk1TXg5aCIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.qHtO3bUkpqnFobiQEc1z90raNGyFjwvoXzWU65gR2Dk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Beare",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "# Retrieve Users\n\nThis endpoint makes an HTTP GET request to retrieve a list of users.\n\n## Request\n\n- The request does not require a request body.\n    \n- Endpoint: `http://localhost:8000/api/users`\n    \n- Method: `GET`\n    \n\n## Response\n\nThe response will be a JSON object representing the list of users. Below is a JSON schema representing the response:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"users\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": {\n            \"type\": \"string\"\n          },\n          \"username\": {\n            \"type\": \"string\"\n          },\n          \"email\": {\n            \"type\": \"string\"\n          }\n          // Additional properties may be present for each user\n        }\n      }\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "get-user-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDIvYXBpL2xvZ2luIiwiaWF0IjoxNzMwOTA4MTAwLCJleHAiOjE3MzA5MTE3MDAsIm5iZiI6MTczMDkwODEwMCwianRpIjoiaFJZWE1aMWoxWXQwOXNHbSIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.mhu8U8LlJEigUgMTumZ6Lc1IZ42TUXIjodEjGCEGJQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/user/17",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"17"
+					]
+				},
+				"description": "# Retrieve User Details\n\nThis endpoint allows you to retrieve the details of a specific user by providing their user ID.\n\n## Request\n\n### Request URL\n\n- Method: GET\n    \n- URL: `http://localhost:8000/api/user/17`\n    \n\n## Response\n\nUpon a successful request, the server will respond with the following details about the user:\n\n- User ID\n    \n- Username\n    \n- Email\n    \n- Profile Picture URL\n    \n- Date of Registration\n    \n- Last Login Date\n    \n- User Role\n    \n- Additional User Details"
+			},
+			"response": []
+		},
+		{
+			"name": "update-user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDIvYXBpL2xvZ2luIiwiaWF0IjoxNzMwOTA0Mzc3LCJleHAiOjE3MzA5MDc5NzcsIm5iZiI6MTczMDkwNDM3NywianRpIjoiSk9KT1FDN09oeFk1TXg5aCIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.qHtO3bUkpqnFobiQEc1z90raNGyFjwvoXzWU65gR2Dk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/user/17?status=active",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"17"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "active"
+						}
+					]
+				},
+				"description": "### Update User Status\n\nThis endpoint is used to update the status of a specific user.\n\n#### Request Body Parameters\n\n- `status` (string, required): The updated status of the user.\n    \n\n#### Response\n\nThe response will include the updated user details, including the user ID, name, and the new status."
+			},
+			"response": []
+		},
+		{
+			"name": "delete-user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDIvYXBpL2xvZ2luIiwiaWF0IjoxNzMwOTA0Mzc3LCJleHAiOjE3MzA5MDc5NzcsIm5iZiI6MTczMDkwNDM3NywianRpIjoiSk9KT1FDN09oeFk1TXg5aCIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.qHtO3bUkpqnFobiQEc1z90raNGyFjwvoXzWU65gR2Dk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/user/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"3"
+					]
+				},
+				"description": "This endpoint sends an HTTP DELETE request to delete the user with the ID 3.\n\nThe response of this request is a JSON schema."
+			},
+			"response": []
+		},
+		{
+			"name": "add-roles",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDIvYXBpL2xvZ2luIiwiaWF0IjoxNzMwOTA0Mzc3LCJleHAiOjE3MzA5MDc5NzcsIm5iZiI6MTczMDkwNDM3NywianRpIjoiSk9KT1FDN09oeFk1TXg5aCIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.qHtO3bUkpqnFobiQEc1z90raNGyFjwvoXzWU65gR2Dk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"User\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/add-roles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-roles"
+					]
+				},
+				"description": "### Add Roles\n\nThis endpoint allows you to add roles.\n\n#### Request Body\n\n- name (string, required): The name of the role to be added.\n    \n\n#### Response\n\nThe response for this request is a JSON schema. Please refer to the schema for details."
+			},
+			"response": []
+		},
+		{
+			"name": "test-logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDIvYXBpL2xvZ2luIiwiaWF0IjoxNzMwOTAzMjYzLCJleHAiOjE3MzA5MDY4NjMsIm5iZiI6MTczMDkwMzI2MywianRpIjoidm5xRGlNYUxSaDZPZG85ZiIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.jPPs1rpL7y3_-BCSh-wgZp1zbvmj1jEwPRm37f8Mb5E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8002/api/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						"api",
+						"logout"
+					]
+				},
+				"description": "### Logout API\n\nThis API endpoint is used to log out the user from the system.\n\n#### Request\n\nThe request should be sent as an HTTP POST to `http://localhost:8000/api/logout`.\n\nThe request body should be empty as this endpoint does not require any additional parameters.\n\n#### Response\n\nThe response of this request is a JSON object with the following schema:\n\n``` json\n{\n  \"message\": \"string\"\n}\n\n ```\n\nThe `message` field in the response contains a string indicating the status of the logout operation."
+			},
+			"response": []
+		},
+		{
+			"name": "sign-roles",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDIvYXBpL2xvZ2luIiwiaWF0IjoxNzMwOTA0Mzc3LCJleHAiOjE3MzA5MDc5NzcsIm5iZiI6MTczMDkwNDM3NywianRpIjoiSk9KT1FDN09oeFk1TXg5aCIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.qHtO3bUkpqnFobiQEc1z90raNGyFjwvoXzWU65gR2Dk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role_id\":1,\r\n    \"user_id\":17\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8002/api/sign-roles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						"api",
+						"sign-roles"
+					]
+				},
+				"description": "### POST /api/sign-roles\n\nThis endpoint is used to sign roles for a specific user.\n\n#### Request Body\n\n- `role_id` (integer) - The ID of the role to be assigned.\n    \n- `user_id` (integer) - The ID of the user for whom the role is being assigned.\n    \n\n#### Response\n\nThe response for this request is a JSON object conforming to the following schema:\n\n``` json\n{\n    \"status\": \"string\",\n    \"message\": \"string\"\n}\n\n ```\n\n- `status` (string) - The status of the request.\n    \n- `message` (string) - A message indicating the result of the request."
+			},
+			"response": []
+		}
+	]
+}
